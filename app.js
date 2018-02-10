@@ -1,5 +1,5 @@
 "use strict";
-//数据
+//测试数据
 var data = [
 	{ id: 1, pid: 0 }, { id: 2, pid: 0 }, { id: 3, pid: 1 }, { id: 4, pid: 1 }, { id: 5, pid: 4 }, { id: 6, pid: 4 }
 ];
