@@ -1,5 +1,5 @@
 "use strict";
-//测试数据
+//测试数据2018年2月10日
 var data = [
 	{ id: 1, pid: 0 }, { id: 2, pid: 0 }, { id: 3, pid: 1 }, { id: 4, pid: 1 }, { id: 5, pid: 4 }, { id: 6, pid: 4 }
 ];
@@ -14,15 +14,15 @@ function treeify(list, idAttr, parentAttr, childrenAttr) {
     var treeList = [];
     var lookup = {};
     list.forEach(function (obj) {
-        lookup[obj[idAttr]] = obj;
+        lookup[obj[idAttr]] = obj; 
         obj[childrenAttr] = [];
     });
-    list.forEach(function (obj) {
+    list.forEach(function (obj) { 
         if (obj[parentAttr] !== null) {
             if (lookup[obj[parentAttr]] === undefined) {
                 
                 treeList.push(lookup[obj[idAttr]]);
-            }
+            } 
             else {
                 lookup[obj[parentAttr]][childrenAttr].push(obj);
             }
