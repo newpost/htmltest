@@ -7,30 +7,30 @@ var data = [
 
 //生成Tree
 function treeify(list, idAttr, parentAttr, childrenAttr) {
-    if (!idAttr) {idAttr = 'id';}
-    if (!parentAttr) {parentAttr = 'parent';}
-    if (!childrenAttr) {childrenAttr = 'children';}
+	if (!idAttr) { idAttr = 'id'; }
+	if (!parentAttr) { parentAttr = 'parent'; }
+	if (!childrenAttr) { childrenAttr = 'children'; }
 
-    var treeList = [];
-    var lookup = {};
-    list.forEach(function (obj) {
-        lookup[obj[idAttr]] = obj;
-        obj[childrenAttr] = [];
-    });
-    list.forEach(function (obj) {
-        if (obj[parentAttr] !== null) {
-            if (lookup[obj[parentAttr]] === undefined) {
-                
-                treeList.push(lookup[obj[idAttr]]);
-            }
-            else {
-                lookup[obj[parentAttr]][childrenAttr].push(obj);
-            }
-        } else {
-            treeList.push(obj);
-        }
-    });
-    return treeList;
+	var treeList = [];
+	var lookup = {};
+	list.forEach(function (obj) {
+		lookup[obj[idAttr]] = obj;
+		obj[childrenAttr] = [];
+	});
+	list.forEach(function (obj) {
+		if (obj[parentAttr] !== null) {
+			if (lookup[obj[parentAttr]] === undefined) {
+
+				treeList.push(lookup[obj[idAttr]]);
+			}
+			else {
+				lookup[obj[parentAttr]][childrenAttr].push(obj);
+			}
+		} else {
+			treeList.push(obj);
+		}
+	});
+	return treeList;
 }
 
 function calcChidrenNum(obj0, obj) {
@@ -62,6 +62,44 @@ function getChildren(obj) {
 	// var ls1 = { id: 0, pid: -1 };
 	// var obj = {};
 	// calcChidrenNum(ls1, obj);
-	var result = treeify(data,"id","pid");
-	console.log(JSON.stringify(result));
+	//	var result = treeify(data,"id","pid");
+	var n = mcd(100, 35);
+	//var n = test(100,35);
+	console.log(n);
 })();
+
+function test(x,y){
+	var result = 1;
+	if(x>y){result = mcd1(x,y);}
+	//else if(x===y){return y;}
+	else{result = mcd1(y,x);}
+	return result;
+}
+
+function mcd1(x,y){
+	if(x%y===0){
+		return y;
+	}
+	else{
+		return mcd1(y,x%y);
+	}
+}
+
+
+function mcd(x, y) {
+	if (x > y) {
+		if (x % y ===0) {
+			return y;
+		} else {
+			return mcd(x % y, y);
+		}
+	}else if(x === y){
+		return y;
+	}else {
+		if (y % x ===0) {
+			return x;
+		} else {
+			return mcd(y % x, x);
+		}
+	}
+}
